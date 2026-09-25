@@ -1,0 +1,25 @@
+{
+  "name": "sync-kit",
+  "version": "1.0.0",
+  "description": "Offline-first data sync: operation log, vector clocks, last-writer-wins and field-level merge, plus adapters for local storage and a transport interface. Includes a live two-client simulation.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Arvion Technologies <hello@arviontech.net> (https://arviontech.net)",
+  "homepage": "https://arvion-technology.github.io/labs/demos/sync-kit/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvion-technology/sync-kit.git"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node scripts/serve.mjs . 4173",
+    "shot": "node scripts/shot.mjs 1440 900 docs/screenshot.png",
+    "shot:2": "node scripts/shot.mjs 1440 900 docs/screenshot-2.png '#/converged'",
+    "verify": "node --test test/ && node scripts/serve-check.mjs",
+    "test:dart": "dart dart/synckit_test.dart"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
