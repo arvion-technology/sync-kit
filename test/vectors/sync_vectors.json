@@ -1,0 +1,37 @@
+{
+  "description": "Shared sync vectors for src/clock.js and dart/synckit.dart.",
+  "compare": [
+    { "a": {}, "b": {}, "expected": "equal" },
+    { "a": { "a": 1 }, "b": { "a": 1 }, "expected": "equal" },
+    { "a": { "a": 1 }, "b": { "a": 2 }, "expected": "before" },
+    { "a": { "a": 2 }, "b": { "a": 1 }, "expected": "after" },
+    { "a": { "a": 1 }, "b": { "b": 1 }, "expected": "concurrent" },
+    { "a": { "a": 2, "b": 1 }, "b": { "a": 1, "b": 1 }, "expected": "after" },
+    { "a": { "a": 1, "b": 2 }, "b": { "a": 2, "b": 1 }, "expected": "concurrent" },
+    { "a": { "a": 3, "b": 2 }, "b": { "a": 1, "b": 2, "c": 1 }, "expected": "concurrent" }
+  ],
+  "merge": [
+    { "clocks": [{}, {}], "expected": {} },
+    { "clocks": [{ "a": 1 }, { "b": 2 }], "expected": { "a": 1, "b": 2 } },
+    { "clocks": [{ "a": 3, "b": 1 }, { "a": 1, "c": 4 }], "expected": { "a": 3, "b": 1, "c": 4 } },
+    { "clocks": [{ "a": 2 }, { "a": 5 }, { "b": 1 }], "expected": { "a": 5, "b": 1 } }
+  ],
+  "apply": [
+    {
+      "doc": { "title": "", "done": false, "assignee": "", "notes": "" },
+      "ops": [
+        { "id": "a-1", "client": "a", "field": "title", "value": "Plan", "ts": 1, "clock": { "a": 1 } },
+        { "id": "b-1", "client": "b", "field": "done", "value": true, "ts": 1, "clock": { "b": 1 } }
+      ],
+      "expected": { "title": "Plan", "done": true, "assignee": "", "notes": "" }
+    },
+    {
+      "doc": { "title": "Plan", "done": false, "assignee": "", "notes": "" },
+      "ops": [
+        { "id": "a-2", "client": "a", "field": "title", "value": "Newer", "ts": 2, "clock": { "a": 2 } },
+        { "id": "a-1", "client": "a", "field": "title", "value": "Older", "ts": 1, "clock": { "a": 1 } }
+      ],
+      "expected": { "title": "Newer", "done": false, "assignee": "", "notes": "" }
+    }
+  ]
+}
