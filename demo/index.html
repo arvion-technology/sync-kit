@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SyncKit — offline-first sync with vector clocks</title>
+  <meta name="description" content="An offline-first sync engine: operation log, vector clocks, last-writer-wins and field-level merge, with a two-client partition simulator and a convergence property test." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0f1a'/><text x='16' y='22' font-family='sans-serif' font-size='13' font-weight='700' fill='%23f5c26b' text-anchor='middle'>S</text></svg>" />
+  <link rel="stylesheet" href="arvion.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="grid-lines"></div>
+
+  <div class="app sk-app">
+    <header class="topbar sk-topbar">
+      <a class="brand" href="#/">
+        <span class="brand-mark">S</span>
+        <span>
+          <span class="brand-word">ARVION <b>/</b> SYNCKIT</span>
+          <span class="brand-sub" style="display:block">Vector clocks · field merge · partitions</span>
+        </span>
+      </a>
+      <nav class="sk-nav" aria-label="Demo">
+        <a href="#/" data-nav="conflict">Conflict demo</a>
+        <a href="#/converged" data-nav="converged">After sync</a>
+      </nav>
+      <span class="spacer"></span>
+      <span class="badge" id="net-badge"><span class="dot" style="color:var(--green)"></span> network up</span>
+      <a class="btn sm" href="https://github.com/arvion-technology/sync-kit" target="_blank" rel="noopener">GitHub ↗</a>
+    </header>
+
+    <main class="sk-main" id="view">
+      <noscript><div class="card"><p class="mb-0">SyncKit runs the engine and the in-memory transport in the page. Enable JavaScript to drive the two clients.</p></div></noscript>
+    </main>
+  </div>
+
+  <div class="demo-banner">
+    <span class="brand-mark" style="width:20px;height:20px;font-size:10px;border-radius:6px">A</span>
+    <span>Arvion Labs</span>
+    <span class="sep"></span>
+    <a href="https://arvion-technology.github.io/labs/">All projects</a>
+    <span class="sep"></span>
+    <a href="https://github.com/arvion-technology/sync-kit" target="_blank" rel="noopener">source</a>
+  </div>
+
+  <script src="arvion.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
