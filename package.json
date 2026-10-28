@@ -16,7 +16,7 @@
     "demo": "node scripts/serve.mjs . 4173",
     "shot": "node scripts/shot.mjs 1440 900 docs/screenshot.png",
     "shot:2": "node scripts/shot.mjs 1440 900 docs/screenshot-2.png '#/converged'",
-    "verify": "node --test test/ && node scripts/serve-check.mjs",
+    "verify": "node --test && node scripts/serve-check.mjs",
     "test:dart": "dart dart/synckit_test.dart"
   },
   "engines": {
