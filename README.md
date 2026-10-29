@@ -2,7 +2,7 @@
 <img src="docs/demo.gif" alt="SyncKit conflict demo with two clients and a partitioned network" width="100%" />
 </div>
 
-<sub>Recorded from the live demo — <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
+<sub>Recorded from the live demo, <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
 
 # SyncKit
 
@@ -23,25 +23,25 @@ vector clock, every client keeps an ordered log, and the merge rules are explici
 enough to test with random operation streams.
 
 The demo starts with the network already partitioned and both clients editing the
-same document. Heal it and the two panels converge — including the same-field
+same document. Heal it and the two panels converge, including the same-field
 conflicts, which are resolved deterministically rather than "last message wins".
 
 ## What it does
 
-- **Operation log** — every field edit becomes an operation with an id, client,
+- **Operation log**: every field edit becomes an operation with an id, client,
   field, value, logical timestamp and vector clock. Replaying one is a no-op.
-- **Vector clocks** — increment, merge, and compare as equal, before, after or
+- **Vector clocks**: increment, merge, and compare as equal, before, after or
   concurrent. Causality is computed, not inferred from wall time.
-- **Two merge strategies** — last-writer-wins per field for same-field conflicts,
+- **Two merge strategies**: last-writer-wins per field for same-field conflicts,
   and field-level merge so concurrent edits to different fields both survive.
-- **A transport interface with partitions** — the in-memory bus queues operations
+- **A transport interface with partitions**: the in-memory bus queues operations
   during a partition and delivers them on heal. A WebSocket transport implements
   the same three methods.
-- **Snapshot and compaction** — the log can be compacted into a snapshot without
+- **Snapshot and compaction**: the log can be compacted into a snapshot without
   changing the document; restore puts the client back on that baseline.
-- **A two-client demo** — edit either client, go offline, partition the network,
+- **A two-client demo**: edit either client, go offline, partition the network,
   heal, sync and watch the clocks, conflicts and operation flow.
-- **A Dart port** — vector clocks and the LWW merge, tested against the same JSON
+- **A Dart port**: vector clocks and the LWW merge, tested against the same JSON
   vectors as the JavaScript engine.
 
 ## Screenshots
@@ -100,7 +100,7 @@ a.flush();
 b.flush();
 bus.heal();
 syncPair(a, b);
-console.log(converged(a, b)); // true — both fields survived
+console.log(converged(a, b)); // true, both fields survived
 ```
 
 ## How it works
@@ -113,8 +113,8 @@ concurrent; if one clock dominates, the older operation is stale and is ignored
 without touching the document.
 
 **Same-field conflicts resolve by (logical ts, client id).** Two concurrent edits
-to `title` cannot both win. The engine keeps per-field metadata — the winning
-timestamp, client and clock — and picks the higher timestamp, then the higher
+to `title` cannot both win. The engine keeps per-field metadata, the winning
+timestamp, client and clock, and picks the higher timestamp, then the higher
 client id, so every replica reaches the same value regardless of delivery order.
 The losing edit is still in the log; nothing is deleted.
 
@@ -152,8 +152,8 @@ The JavaScript suite covers clock increment/merge/compare symmetry, missing
 operations, the transport queue and heal, local operations, duplicate
 idempotency, stale rejection, same-field and different-field concurrency, two-way
 sync, snapshot/compact/restore, deterministic replay and the random convergence
-property. The Dart test reads `test/vectors/sync_vectors.json` — the same
-comparison, merge and apply cases — so the port cannot silently diverge.
+property. The Dart test reads `test/vectors/sync_vectors.json`, the same
+comparison, merge and apply cases, so the port cannot silently diverge.
 
 ## Limitations
 

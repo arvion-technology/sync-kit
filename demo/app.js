@@ -1,4 +1,4 @@
-// SyncKit demo — two clients editing one document across a partition.
+// SyncKit demo, two clients editing one document across a partition.
 // The engine, clocks and transport come from ../src; this file renders and
 // wires the controls.
 import { createBus } from "../src/transport.js";
@@ -64,7 +64,7 @@ function healAndSync() {
   b.flush();
   syncPair(a, b);
   update();
-  show(converged(a, b) ? "Partition healed. Both clients agree." : "Still diverged — this should not happen");
+  show(converged(a, b) ? "Partition healed. Both clients agree." : "Still diverged, this should not happen");
 }
 
 function toggleNetwork() {

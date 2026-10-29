@@ -41,8 +41,8 @@ export function randomScenario({ clients = 2, steps = 40, seed = 7 } = {}) {
 /** A deliberately conflicting script: both clients edit the title while apart. */
 export function conflictScenario() {
   return [
-    { client: "c1", field: "title", value: "Team offsite — Kathmandu" },
-    { client: "c2", field: "title", value: "Team offsite — Pokhara" },
+    { client: "c1", field: "title", value: "Team offsite, Kathmandu" },
+    { client: "c2", field: "title", value: "Team offsite, Pokhara" },
     { client: "c1", field: "assignee", value: "Sita" },
     { client: "c2", field: "assignee", value: "Ramesh" },
     { client: "c1", field: "notes", value: "Book the bus" },

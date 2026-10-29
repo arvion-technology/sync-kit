@@ -1,4 +1,4 @@
-/* SyncKit demo — two clients, one shared document. */
+/* SyncKit demo, two clients, one shared document. */
 :root { --accent-text: #f5c26b; }
 a, .eyebrow { color: var(--accent-text); }
 body { overflow-x: hidden; }
